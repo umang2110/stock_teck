@@ -3,6 +3,21 @@ import yfinance as yf
 import pandas as pd
 from telegram import Update
 from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes
+from flask import Flask
+from threading import Thread
+
+# ========== Flask Web Server ==========
+web_app = Flask('')
+
+@web_app.route('/')
+def home():
+    return "Bot Alive ✅"
+
+def run_flask():
+    web_app.run(host='0.0.0.0', port=8080)
+
+# Start Flask in background
+Thread(target=run_flask).start()
 
 BOT_TOKEN = '8225520099:AAHLhMlqZvnQTWW7H8pj9SoAcIcCDhr0kbE'  # Replace this
 
@@ -76,3 +91,4 @@ app = ApplicationBuilder().token(BOT_TOKEN).build()
 app.add_handler(CommandHandler("sr", support_resistance))
 print("Bot running...")
 app.run_polling()
+
