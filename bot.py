@@ -10,11 +10,10 @@ logging.basicConfig(level=logging.INFO)
 
 # Mapping for your desired timeframes
 TIMEFRAMES = {
-    '1h': ('1d', '15m'),     # 1 hour = 1-day period with 15m interval
-    '4h': ('5d', '30m'),     # 4 hour = 5-day period with 30m interval
-    '1d': ('7d', '1h'),      # 1 day = 7-day period with 1h interval
-    '7d': ('1mo', '1d'),     # 7 day = 1 month period with 1d interval
-    '1mo': ('3mo', '1d'),    # 1 month = 3-month period with 1d interval
+    '1h': ('15d', '1h'),     # 1 hour = 15-day period with 1-hour interval
+    '1d': ('60d', '1d'),     # 1 day = 60-day period with 1-day interval
+    '1w': ('1y', '1wk'),     # 1 week = 1-year period with 1-week interval
+    '1mo': ('5y', '1mo'),    # 1 month = 5-year period with 1-month interval
 }
 
 async def support_resistance(update: Update, context: ContextTypes.DEFAULT_TYPE):
