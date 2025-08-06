@@ -26,7 +26,7 @@ async def support_resistance(update: Update, context: ContextTypes.DEFAULT_TYPE)
         tf = context.args[1] if len(context.args) > 1 else "1d"
 
         if tf not in TIMEFRAMES:
-            await update.message.reply_text("Invalid timeframe. Use one of: 1h, 4h, 1d, 7d, 1mo")
+            await update.message.reply_text("Invalid timeframe. Use one of: 1h, 1d, 1w, 1mo")
             return
 
         period, interval = TIMEFRAMES[tf]
@@ -63,8 +63,6 @@ async def support_resistance(update: Update, context: ContextTypes.DEFAULT_TYPE)
 
         msg = f"📊 *Support & Resistance for {symbol.replace('.NS', '')} ({tf})*\n\n"
         msg += f"💰 Close: {close:.2f}\n📈 High: {high:.2f} | 📉 Low: {low:.2f}\n\n"
-        msg += f"🔹 20 SMA: {sma20}\n🔹 50 SMA: {sma50}\n🔸 Volume: {volume}\n\n"
-        msg += f"📍 *Pivot Point*: {pivot:.2f}\n\n"
         msg += f"🟢 Resistance:\n• R1: {r1:.2f}\n• R2: {r2:.2f}\n• R3: {r3:.2f}\n\n"
         msg += f"🔴 Support:\n• S1: {s1:.2f}\n• S2: {s2:.2f}\n• S3: {s3:.2f}"
 
